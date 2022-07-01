@@ -1,7 +1,8 @@
 const express = require('express');
+const taskController = require('../../controllers/taskController');
 
 const tasksRouter = express.Router();
 
-tasksRouter.get('/', () => console.log('xablau'));
+tasksRouter.get('/', taskController.getAllTasks);
 
 module.exports = tasksRouter
