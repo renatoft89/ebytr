@@ -6,7 +6,7 @@ const getAllModels = async () => {
 
   console.log(result);
 
-  return true;
+  return result;
 }
 
 module.exports = getAllModels;
