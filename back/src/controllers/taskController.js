@@ -11,4 +11,4 @@ const getAllTasks = async (req, res, next) => {
   }
 }
 
-module.export = getAllTasks;
+module.exports = { getAllTasks };
