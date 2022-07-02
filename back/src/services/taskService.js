@@ -13,8 +13,8 @@ const createTaskService = async (task, status) => {
   return createTask;
 }
 
-const editTaskService = async (id) => {
-  const editTask = await editTaskModel(id);
+const editTaskService = async (id, task, status) => {
+  const editTask = await editTaskModel(id, task, status);
 
   return editTask;
 }

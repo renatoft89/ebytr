@@ -26,7 +26,8 @@ const createTask = async (req, res, next) => {
 const editTask = async (req, res, next) => {
   try {
     const { id } = req.params
-    const result = await editTaskService(id);
+    const { task, status } = req.body
+    const result = await editTaskService(id, task, status);
 
     return res.status(201).json(result);
   } catch (error) {
