@@ -18,6 +18,16 @@ const createTaskModel = async (task, status) => {
   return result.insertId;
 }
 
+const deleteTaskModel = async (id) => {
+  const query = `DELETE FROM Ebytr.tasks WHERE id = ?`;
+
+  const result = await connection.query(query, id);
+
+  return result;
+}
+
 module.exports = {
   getAllModels,
-  createTaskModel };
+  createTaskModel,
+  deleteTaskModel
+};
