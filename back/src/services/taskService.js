@@ -1,4 +1,4 @@
-const getAllModels = require('../models/taskModel');
+const { getAllModels, createTaskModel } = require('../models/taskModel');
 
 const getAllService = async () => {
   const result = await getAllModels();
@@ -6,4 +6,13 @@ const getAllService = async () => {
   return result;
 }
 
-module.exports = getAllService;
+const createTaskService = async (task, status) => {
+  console.log({task, status});
+  const createTask = await createTaskModel(task, status)
+
+  return createTask;
+}
+
+module.exports = { 
+  getAllService,
+  createTaskService };
