@@ -1,4 +1,4 @@
-const { getAllService, createTaskService } = require('../services/taskService');
+const { getAllService, createTaskService, deleteTaskService } = require('../services/taskService');
 
 const getAllTasks = async (req, res, next) => {
   try {
