@@ -9,4 +9,15 @@ const getAllModels = async () => {
   return result;
 }
 
-module.exports = getAllModels;
+const createTaskModel = async (task, status) => {
+  const query = `INSERT INTO Ebytr.tasks (content, status)
+  VALUES (?, ?)`;
+
+  const [result] = await connection.query(query, [task, status]);
+
+  return result.insertId;
+}
+
+module.exports = {
+  getAllModels,
+  createTaskModel };
