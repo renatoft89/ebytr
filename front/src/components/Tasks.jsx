@@ -1,19 +1,33 @@
 import React from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import api from '../services/index'
 import '../styles/Tasks.css'
 
 function Tasks() {
+  const [tasks, setTasks] = useState([])
+
   useEffect(() => {
     api
-      .get("/tasks").then((response) => (console.log(response)))
+      .get("/tasks").then((response) => (setTasks(response.data)))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-  }, []);
+  });
   return (
     <div className='tasks'>
-      <p>Tasks</p>
+      <ul>
+        {
+          tasks.map((task) => (
+            <li key={task.id}>
+              { task.content }
+              <button
+                type='button'
+              >X</button>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   );
 }
