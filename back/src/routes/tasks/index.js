@@ -5,6 +5,6 @@ const tasksRouter = express.Router();
 
 tasksRouter.get('/', taskController.getAllTasks);
 tasksRouter.post('/', taskController.createTask);
-tasksRouter.delete('/', taskController.deleteTask);
+tasksRouter.delete('/:id', taskController.deleteTask);
 
 module.exports = tasksRouter
