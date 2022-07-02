@@ -1,4 +1,4 @@
-const getAllService = require('../services/taskService');
+const { getAllService, createTaskService } = require('../services/taskService');
 
 const getAllTasks = async (req, res, next) => {
   try {
@@ -11,4 +11,16 @@ const getAllTasks = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllTasks };
+const createTask = async (req, res, next) => {
+  try {
+    const { task, status } = req.body
+    const result = await createTaskService(task, status);
+
+    return res.status(201).json(result)
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
+module.exports = { getAllTasks, createTask };
