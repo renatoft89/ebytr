@@ -23,4 +23,21 @@ const createTask = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllTasks, createTask };
+const deleteTask = async (req, res, next) => {
+  try {
+    const { id } = req.params
+
+    const result = await deleteTaskService(id)
+
+    return res.status(204).json(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
+module.exports = { 
+  getAllTasks,
+  createTask,
+  deleteTask
+};
