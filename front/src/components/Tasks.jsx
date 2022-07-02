@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import api from '../services/index'
+import { api, deleteTask } from '../services/index'
 import '../styles/Tasks.css'
 
 function Tasks() {
@@ -16,13 +16,14 @@ function Tasks() {
   });
   return (
     <div className='tasks'>
-      <ul>
+       <ul>
         {
           tasks.map((task) => (
-            <li key={task.id}>
+            <li key={ task.id }>
               { task.content }
               <button
                 type='button'
+                onClick={ () => deleteTask(task.id) }
               >X</button>
             </li>
           ))

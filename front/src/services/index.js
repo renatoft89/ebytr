@@ -4,4 +4,11 @@ const api = axios.create({
   baseURL: "http://localhost:3002",
 });
 
-export default api;
+const deleteTask = (id) => {
+
+}
+
+export { 
+  api,
+  deleteTask
+};
