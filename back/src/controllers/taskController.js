@@ -1,4 +1,4 @@
-const { getAllService, createTaskService, deleteTaskService } = require('../services/taskService');
+const { getAllService, createTaskService, deleteTaskService, editTaskService } = require('../services/taskService');
 
 const getAllTasks = async (req, res, next) => {
   try {
@@ -23,6 +23,18 @@ const createTask = async (req, res, next) => {
   }
 }
 
+const editTask = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const result = await editTaskService(id);
+
+    return res.status(201).json(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
 const deleteTask = async (req, res, next) => {
   try {
     const { id } = req.params
@@ -39,5 +51,6 @@ const deleteTask = async (req, res, next) => {
 module.exports = { 
   getAllTasks,
   createTask,
+  editTask,
   deleteTask
 };
