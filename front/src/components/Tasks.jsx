@@ -1,19 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { api, deleteTask } from '../services/index'
+import { getAllTask, deleteTask } from '../services/index'
 import '../styles/Tasks.css'
 
 function Tasks() {
   const [tasks, setTasks] = useState([])
 
+  const allTask = async () => {
+    const allTasks = await getAllTask()
+    setTasks(allTasks);
+  }
+
   useEffect(() => {
-    api
-      .get("/tasks").then((response) => (setTasks(response.data)))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  });
+   allTask();
+  }, [])
+
   return (
     <div className='tasks'>
        <ul>
