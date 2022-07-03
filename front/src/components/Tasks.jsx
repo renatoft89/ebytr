@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useCallback } from 'react';
 import { useEffect } from 'react';
 import { getAllTask, deleteTask, addNewTask } from '../services/index'
 
@@ -17,11 +18,11 @@ function Tasks() {
 
   const handleSelect = ({ target }) => (setStatusTask(target.value))
 
-  const createNewTask = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const createNewTask = useCallback(async () => {
     addNewTask(contentTask, statusTask)
-    allTask();
     setContentTask('')
-  }
+  })
 
   const removeTask = (id) => {
     deleteTask(id)
@@ -30,7 +31,7 @@ function Tasks() {
 
   useEffect(() => {
    allTask();
-  }, [])
+  }, [createNewTask])
 
   return (
     <div className='tasks'>
