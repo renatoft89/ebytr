@@ -22,7 +22,16 @@ const deleteTask = (id) => {
   });
 }
 
+const addNewTask = (contentTask, statusTask) => {
+  api.post('/tasks', { task: contentTask, status: statusTask })
+  .then((response) => (response))
+  .catch((err) => {
+    console.error("ops! ocorreu um erro" + err);
+  });
+}
+
 export { 
   getAllTask,
-  deleteTask
+  deleteTask,
+  addNewTask
 };
