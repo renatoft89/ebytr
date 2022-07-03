@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getAllTask, deleteTask } from '../services/index'
+import { getAllTask, deleteTask, addNewTask } from '../services/index'
+
 import '../styles/Tasks.css'
 
 function Tasks() {
@@ -15,6 +16,17 @@ function Tasks() {
   }
 
   const handleSelect = ({ target }) => (setStatusTask(target.value))
+
+  const createNewTask = () => {
+    addNewTask(contentTask, statusTask)
+    allTask();
+    setContentTask('')
+  }
+
+  const removeTask = (id) => {
+    deleteTask(id)
+    allTask();
+  }
 
   useEffect(() => {
    allTask();
@@ -42,6 +54,13 @@ function Tasks() {
           <option value="pronto">Pronto</option>
         </select>
       </section>
+      <button
+          type="button"
+          data-testid="button-filter"
+          onClick={ createNewTask }
+        >
+          Add New Task
+        </button>
        <ul>
         {
           tasks.map((task) => (
@@ -49,7 +68,7 @@ function Tasks() {
               { task.content }
               <button
                 type='button'
-                onClick={ () => deleteTask(task.id) }
+                onClick={ () => removeTask(task.id) }
               >X</button>
             </li>
           ))
