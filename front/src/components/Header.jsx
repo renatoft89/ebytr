@@ -4,7 +4,7 @@ import '../styles/Header.css'
 function Header() {
   return (
     <div className='header'>
-      <p>Este é o Header...</p>
+      <h1>Ebytr - Tasks</h1>
     </div>
   );
 }
