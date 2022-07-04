@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { useCallback } from 'react';
 import { useEffect } from 'react';
 import { getAllTask, deleteTask, addNewTask } from '../services/index'
 
@@ -18,64 +17,73 @@ function Tasks() {
 
   const handleSelect = ({ target }) => (setStatusTask(target.value))
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const createNewTask = useCallback(async () => {
+  const createNewTask = (async () => {
     addNewTask(contentTask, statusTask)
     setContentTask('')
+    await allTask();
   })
 
-  const removeTask = (id) => {
+  const removeTask = (async(id) => {
     deleteTask(id)
-    allTask();
-  }
+    await allTask();
+  })
 
   useEffect(() => {
-   allTask();
-  }, [createNewTask])
+    allTask();
+  }, [contentTask])
 
   return (
-    <div className='tasks'>
-      <label htmlFor="input-task">
-        New Task: 
-        <input
-          id="task-input"
-          type="text"
-          value={ contentTask }
-          onChange={ ({ target }) => setContentTask(target.value) }
-        />
-      </label>
-      <section className="status">
-        Status:
-        <select
-          id="status-task"
-          onChange={ handleSelect }
-        >
-          <option value="pendente">Pendente</option>
-          <option value="em andamento">Em andamento</option>
-          <option value="pronto">Pronto</option>
-        </select>
-      </section>
-      <button
-          type="button"
-          data-testid="button-filter"
-          onClick={ createNewTask }
-        >
-          Add New Task
-        </button>
-       <ul>
-        {
-          tasks.map((task) => (
-            <li key={ task.id }>
-              { task.content }
-              <button
-                type='button'
-                onClick={ () => removeTask(task.id) }
-              >X</button>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <section className='tasks'>
+      <div className='container-task'>
+        <div className='inputs'>
+          <label htmlFor="input-task">
+            New Task:
+            <input
+              id="task-input"
+              type="text"
+              value={contentTask}
+              onChange={({ target }) => setContentTask(target.value)}
+            />
+          </label>
+          <section className="status">
+            Status:
+            <select
+              id="status-task"
+              onChange={handleSelect}
+            >
+              <option value="pendente">Pendente</option>
+              <option value="em andamento">Em andamento</option>
+              <option value="pronto">Pronto</option>
+            </select>
+          </section>
+          <button
+            type="button"
+            data-testid="button-filter"
+            onClick={createNewTask}
+          >
+            Add New Task
+          </button>
+        </div>
+
+        <section className='list'>
+          <div className='list-tasks'>
+            <ul>
+              {
+                tasks.map((task) => (
+                  <li key={task.id}>
+                    {task.content}
+                    <button
+                      type='button'
+                      onClick={() => removeTask(task.id)}
+                    >X</button>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
   );
 }
 
