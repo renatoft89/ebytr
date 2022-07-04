@@ -8,4 +8,4 @@ tasksRouter.post('/', taskController.createTask);
 tasksRouter.put('/:id', taskController.editTask);
 tasksRouter.delete('/:id', taskController.deleteTask);
 
-module.exports = tasksRouter
+module.exports = tasksRouter;

@@ -10,6 +10,6 @@ const middleware = require('./middlewares/errorMiddleware');
 
 app.use(cors());
 app.use(router);
-app.use(middleware.errorMiddleware)
+app.use(middleware.errorMiddleware);
 
 module.exports = app;
