@@ -1,3 +1,53 @@
 .tasks {
-  background-color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.container-task {
+  width: 800px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 2px;
+  border: 1px solid black;
+}
+
+.inputs {
+  display: flex;
+  width: 600;
+  padding: 50px;
+}
+
+.list {
+  width: 500px;
+}
+
+.list-tasks {
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.status {
+  margin-left: 8px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+input {
+  margin-left: 10px;
+}
+
+select {
+  margin-left: 10px;
+}
+
+li {
+  text-decoration: underline;
 }
