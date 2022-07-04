@@ -23,10 +23,10 @@ function Tasks() {
     await allTask();
   })
 
-  const removeTask = (async(id) => {
+  const removeTask = (id) => {
     deleteTask(id)
-    await allTask();
-  })
+    setTasks(tasks.filter(task => task.id !== id))
+  }
 
   useEffect(() => {
     allTask();
