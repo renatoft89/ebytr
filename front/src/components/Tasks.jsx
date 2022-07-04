@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllTask, deleteTask, addNewTask } from '../services/index'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
+
 import '../styles/Tasks.css'
 
 function Tasks() {
@@ -72,10 +75,20 @@ function Tasks() {
                 tasks.map((task) => (
                   <li key={task.id}>
                     {task.content}
-                    <button
+                    {/* <button
                       type='button'
                       onClick={() => removeTask(task.id)}
-                    >X</button>
+                    >X</button> */}
+                    <FontAwesomeIcon
+                      className='trash-icon' 
+                      icon={ faTrashAlt }
+                      onClick={() => removeTask(task.id)}
+                   />
+                   <FontAwesomeIcon 
+                    icon={ faEdit }
+                    className='edit-icon'
+                    
+                  />
                   </li>
                 ))
               }

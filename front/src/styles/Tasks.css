@@ -50,4 +50,10 @@ select {
 
 li {
   text-decoration: underline;
+  margin-top: 10px;
+}
+
+.trash-icon {
+  margin-left: 12px;
+  margin-right: 12px;
 }
