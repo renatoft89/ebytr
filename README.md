@@ -14,9 +14,12 @@ Link: [Ebytr - Tasks](https://ebytr-front04.herokuapp.com/)
 ---
 
 # Como Rodar:
+FAÇA O CLONE DO PROJETO:
+ 1. git clone git@github.com:renatoft89/ebytr.git;
+ ---
+
 BACK-END
 
-    1. git clone git@github.com:renatoft89/ebytr.git;
     2. cd ebytr
     3. `cd back`;
     4. `npm install`
@@ -38,3 +41,5 @@ FRONT-END
     [x] - Remover uma tarefa da lista;
     [ ] - Atualizar uma tarefa da lista;
     [x] - A tarefa deve possuir um status editável: pendente, em andamento ou pronto;
+    
+    
