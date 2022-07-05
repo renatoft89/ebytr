@@ -75,10 +75,9 @@ function Tasks() {
                 tasks.map((task) => (
                   <li key={task.id}>
                     {task.content}
-                    {/* <button
-                      type='button'
-                      onClick={() => removeTask(task.id)}
-                    >X</button> */}
+                    <span>
+                      { task.status }                    
+                    </span>
                     <FontAwesomeIcon
                       className='trash-icon' 
                       icon={ faTrashAlt }
