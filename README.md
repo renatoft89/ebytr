@@ -24,6 +24,8 @@ BACK-END
     3. `cd back`;
     4. `npm install`
     5. `npm start`
+    
+    obs: O back-end utiliza um banco de dados online o cleardb do Heroku
 ---
 FRONT-END
 
@@ -32,7 +34,6 @@ FRONT-END
     8. `npm install`
     9. `npm start`
     
-    obs: O back-end utiliza um banco de dados online o cleardb do Heroku
 ---
 # Funcionalidades:
     [x] - Visualizar a lista de tarefas;
