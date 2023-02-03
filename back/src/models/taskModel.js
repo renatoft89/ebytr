@@ -1,14 +1,14 @@
 const connection = require('./connection');
 
 const getAllModels = async () => {
-  const query = 'select * from Ebytr.tasks';
+  const query = 'select * from tasks';
   const [result] = await connection.query(query);
 
   return result;
 };
 
 const createTaskModel = async (id, task, status) => {
-  const query = `INSERT INTO Ebytr.tasks (id, content, status)
+  const query = `INSERT INTO tasks (id, content, status)
   VALUES (?, ?, ?)`;
 
   const [result] = await connection.query(query, [id, task, status]);
@@ -17,7 +17,7 @@ const createTaskModel = async (id, task, status) => {
 };
 
 const editTaskModel = async (id, task, status) => {
-  const query = 'UPDATE Ebytr.tasks SET content = ?, status = ? WHERE id = ?';
+  const query = 'UPDATE tasks SET content = ?, status = ? WHERE id = ?';
 
   const result = await connection.query(query, [task, status, id]);
 
@@ -25,7 +25,7 @@ const editTaskModel = async (id, task, status) => {
 };
 
 const deleteTaskModel = async (id) => {
-  const query = 'DELETE FROM Ebytr.tasks WHERE id = ?';
+  const query = 'DELETE FROM tasks WHERE id = ?';
 
   const result = await connection.query(query, id);
 
