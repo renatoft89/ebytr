@@ -7,11 +7,11 @@ const getAllModels = async () => {
   return result;
 };
 
-const createTaskModel = async (task, status) => {
-  const query = `INSERT INTO Ebytr.tasks (content, status)
-  VALUES (?, ?)`;
+const createTaskModel = async (id, task, status) => {
+  const query = `INSERT INTO Ebytr.tasks (id, content, status)
+  VALUES (?, ?, ?)`;
 
-  const [result] = await connection.query(query, [task, status]);
+  const [result] = await connection.query(query, [id, task, status]);
 
   return result.insertId;
 };

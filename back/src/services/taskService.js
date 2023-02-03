@@ -8,8 +8,8 @@ const getAllService = async () => {
   return result;
 };
 
-const createTaskService = async (task, status) => {
-  const createTask = await createTaskModel(task, status);
+const createTaskService = async (id, task, status) => {
+  const createTask = await createTaskModel(id, task, status);
 
   return createTask;
 };

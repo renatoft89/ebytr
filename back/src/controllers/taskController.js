@@ -14,8 +14,8 @@ const getAllTasks = async (req, res, next) => {
 
 const createTask = async (req, res, next) => {
   try {
-    const { task, status } = req.body;
-    const result = await createTaskService(task, status);
+    const { id, task, status } = req.body;
+    const result = await createTaskService(id, task, status);
 
     return res.status(201).json(result);
   } catch (error) {

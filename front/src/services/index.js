@@ -22,8 +22,8 @@ const deleteTask = (id) => {
   });
 }
 
-const addNewTask = (contentTask, statusTask) => {
-  api.post('/tasks', { task: contentTask, status: statusTask })
+const addNewTask = (id, contentTask, statusTask) => {
+  api.post('/tasks', { id, task: contentTask, status: statusTask })
   .then((response) => (response))
   .catch((err) => {
     console.error("ops! ocorreu um erro" + err);

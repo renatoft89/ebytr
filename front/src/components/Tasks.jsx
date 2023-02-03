@@ -12,18 +12,24 @@ function Tasks() {
   const [tasks, setTasks] = useState([])
   const [statusTask, setStatusTask] = useState('Pendente');
   const [contentTask, setContentTask] = useState('');
+  const [id, setId] = useState(0);
 
-  const allTask = async () => {
+  const fetchAllTasks = (async() => {
     const allTasks = await getAllTask()
-    setTasks(allTasks);
-  }
+    setTasks(allTasks)
+
+    if (allTasks.length > 0) {
+      setId(allTasks.length)
+    }
+  })
 
   const handleSelect = ({ target }) => (setStatusTask(target.value))
 
   const createNewTask = (async () => {
-    addNewTask(contentTask, statusTask)
+    setId(id +1)
+    setTasks([...tasks, {id, content: contentTask, status: statusTask}])
+    addNewTask(id, contentTask, statusTask)
     setContentTask('')
-    await allTask();
   })
 
   const removeTask = (id) => {
@@ -32,8 +38,9 @@ function Tasks() {
   }
 
   useEffect(() => {
-    allTask();
-  }, [contentTask])
+    fetchAllTasks()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <section className='tasks'>
